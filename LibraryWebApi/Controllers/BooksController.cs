@@ -36,7 +36,7 @@ namespace LibraryWebApi.Controllers
         [HttpGet]
         public async Task<IEnumerable<Book>> GetAllAsync()
         {
-            return await _context.Books.Include(b => b.Author).ToListAsync();
+            return await _context.Books.Include(b => b.Author).Include(b => b.CheckedOutTo).ToListAsync();
         }
 
         [HttpGet("{id}")]
